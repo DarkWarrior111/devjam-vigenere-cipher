@@ -15,13 +15,13 @@ const Popup = ({ children, setHidden, hidden }) => {
                     className={`transition-all duration-200 ${
                         hidden
                             ? "bg-transparent"
-                            : " absolute inset-0 -z-10 bg-gray-100 opacity-50"
+                            : " absolute inset-0 -z-10 bg-gray-100 dark:bg-gray-900 opacity-50"
                     }`}
                     onClick={() => setHidden(true)}
                 ></div>
 
                 <div
-                    className={`bg-gray-300 space-y-2 md:min-w-[30rem] shadow-md shadow-gray-500 p-2 rounded-md relative transition-transform duration-200 ${
+                    className={`bg-gray-300 dark:bg-gray-800 space-y-2 mx-3 w-96 shadow-md shadow-gray-500 p-2 rounded-md relative transition-transform duration-200 ${
                         hidden ? "scale-0" : "scale-100"
                     }`}
                 >

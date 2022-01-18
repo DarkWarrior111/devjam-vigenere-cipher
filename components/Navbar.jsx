@@ -62,7 +62,8 @@ const Navbar = () => {
                     </a>
                 </Link>
                 <a
-                    href="/"
+                    href="https://github.com/DarkWarrior111/devjam-vigenere-cipher"
+                    target="_blank"
                     className="flex items-center transition-opacity opacity-75 hover:opacity-100"
                 >
                     <FontAwesomeIcon

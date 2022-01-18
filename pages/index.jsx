@@ -72,15 +72,16 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="flex justify-center gap-5 mt-3">
+                    {/* using opacity-0 to make radio accessible using keyboard */}
                     <label>
                         <input
                             type="radio"
                             name="radio"
-                            className="peer hidden"
+                            className="peer opacity-0"
                             defaultChecked={true}
                             onClick={() => setDecode(false)}
                         />
-                        <span className="p-2 cursor-pointer rounded peer-checked:text-white peer-checked:font-bold peer-checked:bg-gray-600">
+                        <span className="p-2 peer-focus:outline cursor-pointer rounded peer-checked:text-white peer-checked:font-bold peer-checked:bg-gray-600">
                             Encode
                         </span>
                     </label>
@@ -88,10 +89,10 @@ export default function Home() {
                         <input
                             type="radio"
                             name="radio"
-                            className="peer hidden"
+                            className="peer opacity-0"
                             onClick={() => setDecode(true)}
                         />
-                        <span className="p-2 rounded cursor-pointer peer-checked:text-white peer-checked:font-bold peer-checked:bg-gray-600">
+                        <span className="p-2 peer-focus:outline rounded cursor-pointer peer-checked:text-white peer-checked:font-bold peer-checked:bg-gray-600">
                             Decode
                         </span>
                     </label>
@@ -183,7 +184,7 @@ export default function Home() {
                     <input
                         value={characterList}
                         onChange={(e) => setCharacterList(e.target.value)}
-                        className="h-8 w-full rounded focus:border border-black"
+                        className="h-8 w-full rounded focus:border border-black dark:bg-gray-700 px-1"
                         type="text"
                     />
                     {characterList !== defaultCharacterList && (
@@ -202,8 +203,8 @@ export default function Home() {
                 </label>
                 {characterList !== defaultCharacterList && (
                     <div className="text-red-600 text-sm max-w-md break-words">
-                        Note: You need to enter the same character list to be
-                        able to decode properly
+                        Note: You need to use the same characterList while
+                        decoding
                     </div>
                 )}
             </Popup>

@@ -11,7 +11,7 @@ const about = () => {
             <Head>
                 <title>About</title>
             </Head>
-            <ReactMarkdown className="prose mx-auto my-5 rounded shadow bg-gray-200 prose prose-sm md:prose-base p-3">
+            <ReactMarkdown className="prose mx-auto my-5 rounded shadow bg-gray-200 dark:bg-gray-900 dark:prose-invert prose-sm md:prose-base p-3">
                 {decodeURIComponent(md)}
             </ReactMarkdown>
         </>
