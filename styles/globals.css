@@ -1,0 +1,39 @@
+/* importing fonts inside <Head> causes fontawesome icons to lose their font size */
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes show {
+    0% {
+        width: calc(20 * 1) px;
+    }
+    14.3% {
+        width: calc(20 * 2) px;
+    }
+    28.6% {
+        width: calc(20 * 3) px;
+    }
+    42.6% {
+        width: calc(20 * 4) px;
+    }
+    57.2% {
+        width: calc(20 * 5) px;
+    }
+    71.5% {
+        width: calc(20 * 6) px;
+    }
+    85.8% {
+        width: calc(20 * 7) px;
+    }
+    100% {
+        width: calc(20 * 8) px;
+    }
+}
+
+.animate-text {
+    text-align: center;
+    overflow: hidden;
+    animation: show 500ms infinite;
+}
