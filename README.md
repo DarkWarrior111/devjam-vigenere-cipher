@@ -1,27 +1,68 @@
-# Next.js + Tailwind CSS Example
+# Vigenère Cipher
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This project was made as a part of [Devjam](https://devjam.vercel.app).
 
-## Preview
+# Demo
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+### [Live Demo](https://devjam-vigenere-cipher.vercel.app/)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+![Screenshot](https://i.imgur.com/Xicb4gn.png)
 
-## Deploy your own
+# Features
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## User Stories
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+-   [x] User can see the app window with these components:
+    -   Plain text message input field
+    -   Encryption key input field
+    -   Action buttons - 'Encrypt' and 'Decrypt'
+    -   Resulting encrypted or decrypted message
+-   [x] User can enter the text to be encrypted in the plain text message input
+        field
+-   [x] User can enter the Encryption key the Vigenere algorithm will use to encrypt the plain text message
+-   [x] User can see the encrypted message displayed in the result field
+-   [x] User can decrypt encrypted messages using Encryption key
 
-## How to use
+## Bonus features
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+-   [ ] User can see a 'Compare' button after decryption that compares the
+        original plain text message with the decrypted message
+-   [x] User can copy the encrypted message by clicking a button
+-   [x] User can generate a random encryption key
+-   [x] User can encrypt uppercase letters, numbers and symbols if they choose to
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+# Dependencies
+
+-   Next.js
+-   Tailwind CSS
+-   FontAwesome Icons
+
+# Installation and running
+
+Clone git repo
+
+```
+git clone https://github.com/DarkWarrior111/devjam-vigenere-cipher.git
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Install dependencies
+
+```
+npm install
+```
+
+Run
+
+```
+npm run dev
+```
+
+Build
+
+```
+npm run build
+```
+
+# Credits
+
+-   [Boxentriq](https://www.boxentriq.com/code-breaking/vigenere-cipher) - Text for about page

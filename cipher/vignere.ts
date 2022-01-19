@@ -1,48 +1,63 @@
-export function encodeVignere(
+interface options {
+    uppercase: boolean;
+    numbers: boolean;
+    symbols: boolean;
+}
+
+export function generateCharacterList(options: options) {
+    let { uppercase, numbers, symbols } = options;
+    let characterList = "abcdefghijklmnopqrstuvwxyz";
+    let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let symbolList = "`!@#$%^&*()~+-=_{}[]\\/|:;\"'<>.,?";
+
+    if (uppercase) characterList = uppercaseLetters + characterList;
+    if (numbers) characterList += "1234567890";
+    if (symbols) characterList += symbolList;
+
+    console.log(characterList);
+    return characterList;
+}
+
+export function encryptVigenere(
     plaintext: string,
     key: string,
-    characterList: string
+    options: options
 ) {
-    let encodedtext = "";
+    let encryptedText = "";
     if (!key || !plaintext) {
         return "";
     }
-    // if uppercase characters is not present in characrerList then convert everything to lowercase
-    if (characterList.indexOf("ABCDEFGHIJKLMNOPQRSTUVWXYZ") < 0) {
-        plaintext = plaintext.toLowerCase();
-        key = key.toLowerCase();
-    }
+    let characterList = generateCharacterList(options);
     plaintext.split("").map((char, i) => {
         if (characterList.indexOf(char) > -1) {
-            encodedtext +=
+            encryptedText +=
                 characterList[
                     (characterList.indexOf(char) +
                         characterList.indexOf(key[i % key.length])) %
                         characterList.length
                 ];
         } else {
-            encodedtext += char;
+            encryptedText += char;
         }
     });
-    return encodedtext;
+    return encryptedText;
 }
 
-export function decodeVignere(
-    encodedtext: string,
+export function decryptVigenere(
+    encryptedText: string,
     key: string,
-    characterList: string
+    options: options
 ) {
-    if (!key || !encodedtext) {
+    if (!key || !encryptedText) {
         return "";
     }
-    if (characterList.indexOf("ABCDEFGHIJKLMNOPQRSTUVWXYZ") < 0) {
-        encodedtext = encodedtext.toLowerCase();
-        key = key.toLowerCase();
-    }
-    let decodedtext = "";
-    encodedtext.split("").map((char, i) => {
+
+    let characterList = generateCharacterList(options);
+
+    let decryptedText = "";
+    encryptedText.split("").map((char, i) => {
         if (characterList.indexOf(char) > -1) {
-            decodedtext +=
+            decryptedText +=
                 characterList[
                     (characterList.indexOf(char) -
                         characterList.indexOf(key[i % key.length]) +
@@ -50,8 +65,8 @@ export function decodeVignere(
                         characterList.length
                 ];
         } else {
-            decodedtext += char;
+            decryptedText += char;
         }
     });
-    return decodedtext;
+    return decryptedText;
 }
