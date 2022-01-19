@@ -84,7 +84,7 @@ export default function Home() {
                             defaultChecked={true}
                             onClick={() => setdecrypt(false)}
                         />
-                        <span className="p-2 peer-focus:outline cursor-pointer rounded peer-checked:text-white peer-checked:font-bold peer-checked:bg-gracrypt0">
+                        <span className="p-2 peer-focus:outline rounded cursor-pointer peer-checked:text-white peer-checked:font-bold peer-checked:bg-gray-600">
                             Encrypt
                         </span>
                     </label>
