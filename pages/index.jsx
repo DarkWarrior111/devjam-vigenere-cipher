@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faCaretDown,
     faClone,
     faCog,
     faRandom,
@@ -139,6 +138,7 @@ export default function Home() {
                         onChange={(e) => setKey(e.target.value)}
                     />
                     <button
+                        title="Generate Random Key"
                         className="rounded bg-gray-600 h-8 px-2 flex items-center hover:bg-gray-700 text-white font-bold"
                         onClick={() => generateRandomKey()}
                     >

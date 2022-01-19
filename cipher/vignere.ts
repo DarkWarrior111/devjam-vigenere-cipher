@@ -1,10 +1,3 @@
-let characterVariant = {
-    upperlowernum: "",
-    upperlower: "",
-    lower: "",
-    lowernum: "",
-};
-
 export function encodeVignere(
     plaintext: string,
     key: string,

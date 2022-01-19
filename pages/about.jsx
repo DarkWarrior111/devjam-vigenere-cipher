@@ -1,19 +1,186 @@
 import Head from "next/head";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 
 const about = () => {
-    // markdown text in components/about.md
-    let md =
-        "%23%20What%20is%20the%20Vigen%C3%A8re%20Cipher%3F%0A%0AThe%20%5BVigen%C3%A8re%20cipher%5D(https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FVigen%25C3%25A8re_cipher)%20is%20a%20polyalphabetic%20substitution%20cipher%20that%20is%20a%20natural%20evolution%20of%20the%20Caesar%20cipher.%20The%20Caesar%20cipher%20encrypts%20by%20shifting%20each%20letter%20in%20the%20plaintext%20up%20or%20down%20a%20certain%20number%20of%20places%20in%20the%20alphabet.%20If%20the%20message%20was%20right%20shifted%20by%204%2C%20each%20A%20would%20become%20E%2C%20and%20each%20S%20would%20become%20W.%0A%0AIn%20the%20Vigen%C3%A8re%20cipher%2C%20a%20message%20is%20encrypted%20using%20a%20secret%20key%2C%20as%20well%20as%20an%20encryption%20table%20(called%20a%20Vigenere%20square%2C%20Vigenere%20table%2C%20or%20tabula%20recta).%20The%20tabula%20recta%20typically%20contains%20the%2026%20letters%20of%20the%20Latin%20alphabet%20from%20A%20to%20Z%20along%20the%20top%20of%20each%20column%2C%20and%20repeated%20along%20the%20left%20side%20at%20the%20beginning%20of%20each%20row.%20Each%20row%20of%20the%20square%20has%20the%2026%20letters%20of%20the%20Latin%20alphabet%2C%20shifted%20one%20position%20to%20the%20right%20in%20a%20cyclic%20way%20as%20the%20rows%20progress%20downwards.%20Once%20B%20moves%20to%20the%20front%2C%20A%20moves%20down%20to%20the%20end.%20This%20continues%20for%20the%20entire%20square.%0A%0AAlso%2C%20other%20alphabets%20than%20the%20English%20alphabet%20can%20be%20used%20in%20a%20similar%20way%20to%20construct%20a%20tabula%20recta.%0A!%5BTabula%20Recta%5D(https%3A%2F%2Fwww.boxentriq.com%2Fimg%2Fvigenere-table1.png)%0A%0ALet%E2%80%99s%20take%20this%20plaintext%20phrase%20as%20an%20example%3A%0A%0A%60%60%60%0AIMPROVE%20YOUR%20PUZZLE%20SOLVING%20SKILLS%0A%60%60%60%0A%0AAfter%20finalizing%20the%20plaintext%2C%20the%20person%20encrypting%20would%20then%20pick%20a%20secret%20key%2C%20which%20would%20help%20encrypt%20and%20decrypt%20the%20message.%20Our%20example%20secret%20key%20here%20is%3A%0A%0A%60%60%60%0ABOXENTRIQ%0A%60%60%60%0A%0AThe%20next%20step%20is%20repeating%20the%20secret%20key%20enough%20times%20so%20its%20length%20matches%20the%20plain%20text.%0A%0A%60%60%60%0AIMPROVE%20YOUR%20PUZZLE%20SOLVING%20SKILLS%0A%60%60%60%0A%0A%60%60%60%0ABOXENTR%20IQBO%20XENTRI%20QBOXENT%20RIQBOX%0A%60%60%60%0A%0AOnce%20the%20two%20lines%20are%20split%20into%20five-letter%20groups%2C%20start%20encrypting.%20Take%20one%20letter%20from%20the%20plaintext%20group%20and%20a%20letter%20from%20the%20secret%20key%20group%20(we%E2%80%99re%20going%20to%20start%20with%20I%20and%20B)%2C%20and%20find%20the%20entry%20in%20the%20tabula%20recta%20where%20the%20row%20and%20column%20intersect.%20For%20this%20example%2C%20the%20first%20letter%20of%20the%20encrypted%20cipher%20text%20is%20J.%0A!%5BVigenere%20table%20example%5D(https%3A%2F%2Fwww.boxentriq.com%2Fimg%2Fvigenere-table2.png)%0A%0AOnce%20you%E2%80%99ve%20done%20that%20for%20every%20character%2C%20your%20final%20encrypted%20text%20should%20look%20like%20this%3A%0A%0A%60%60%60%0AJAMVB%20OVGEV%20FMYMS%20CMIPZ%20SMAZJ%20SYMZP%0A%60%60%60%0A%0AYou%20can%20use%20this%20cipher%20for%20short%20or%20long%20messages.%20Once%20you%E2%80%99ve%20mastered%20the%20tabula%20recta%2C%20the%20encryption%20process%20is%20easy!%0A%0A%23%20How%20to%20Decrypt%20it%0A%0AIf%20you%20have%20the%20secret%20key%2C%20decrypting%20is%20as%20easy%20as%20encrypting.%20You%20can%20work%20backwards%20using%20the%20tabula%20recta.%20First%20repeat%20the%20secret%20key%20so%20its%20length%20matches%20the%20cipher%20text.%0A%0A%60%60%60%0AJAMVB%20OVGEV%20FMYMS%20CMIPZ%20SMAZJ%20SYMZP%0A%60%60%60%0A%0A%60%60%60%0ABOXEN%20TRIQB%20OXENT%20RIQBO%20XENTR%20IQBOX%0A%60%60%60%0A%0AUsing%20the%20tabula%20recta%2C%20find%20the%20row%20that%20corresponds%20to%20the%20first%20letter%20in%20your%20secret%20key%20text-%20in%20our%20case%2C%20B.%20In%20the%20B%20row%2C%20find%20the%20corresponding%20cipher%20text%20letter%20J.%20The%20vertical%20column%20where%20that%20cipher%20text%20letter%20is%20located%20reveals%20the%20plaintext%20letter%20I.%0A!%5BVigen%C3%A8re%20cipher%20table%5D(https%3A%2F%2Fwww.boxentriq.com%2Fimg%2Fvigenere-table3.png)%0A%0AThe%20Vigen%C3%A8re%20cipher%20can%20also%20be%20described%20and%20then%20decrypted%20algebraically%2C%20by%20assigning%20each%20letter%20from%20A%20to%20Z%20a%20value%20from%200%20to%2025%2C%20with%20addition%20being%20performed%20modulo%2026.%0A%0A%23%20How%20to%20Break%20It%0A%0AOf%20course%2C%20these%20decryption%20methods%20only%20work%20if%20the%20secret%20key%20is%20known.%20In%20his%20initial%20attack%20against%20the%20Vigen%C3%A8re%20cipher%2C%20Friedrich%20Kasiski%20had%20success%20by%20examining%20repeated%20strings%20of%20characters%20in%20the%20cipher%20text%2C%20which%20could%20indicate%20the%20length%20of%20the%20secret%20key.%20This%20method%20is%20now%20called%20the%20Kasiski%20examination.%20Finding%20more%20repeated%20strings%20of%20characters%20helps%20narrow%20down%20the%20length%20of%20the%20potential%20secret%20key.%20Once%20the%20length%20of%20the%20secret%20key%20is%20known%2C%20the%20cipher%20text%20is%20rewritten%20into%20a%20corresponding%20number%20of%20columns%2C%20with%20a%20column%20for%20each%20letter%20of%20the%20key.%20Each%20column%20is%20then%20made%20up%20of%20plaintext%20that%E2%80%99s%20been%20encrypted%20by%20one%20Caesar%20cipher.%20The%20code-breaker%20then%20breaks%20the%20cipher%20text%20in%20a%20similar%20way%20to%20a%20Caesar%20cipher.%0A%0AAuguste%20Kerckhoffs%20improved%20on%20Kasiski%E2%80%99s%20method%20by%20matching%20each%20%E2%80%9Ccolumn's%20letter%20frequencies%20to%20shifted%20plaintext%20frequencies%20to%20discover%20the%20key%20letter%20(Caesar%20shift)%20for%20that%20column.%E2%80%9D%20Once%20the%20code-breaker%20knows%20each%20letter%20in%20the%20secret%20key%2C%20all%20they%20have%20to%20do%20is%20decrypt%20the%20cipher%20text%20using%20a%20Vigenere%20square.%0A%0AAnother%20option%20is%20the%20key%20elimination%20method.%20If%20you%20guess%20the%20key%20length%20and%20then%20subtract%20the%20ciphertext%20from%20itself%2C%20offset%20by%20the%20key%20length%2C%20it%20will%20eliminate%20the%20secret%20key.%20The%20result%20will%20be%20the%20plaintext%20subtracted%20from%20itself%2C%20offset%20by%20the%20key%20length.%20If%20any%20words%20longer%20than%20the%20key%20length%20can%20be%20guessed%2C%20their%20self-encryption%20can%20be%20searched%20for.%0A%0ACopied%20from%20%3Chttps%3A%2F%2Fwww.boxentriq.com%2Fcode-breaking%2Fvigenere-cipher%3E%0A";
     return (
         <>
             <Head>
                 <title>About</title>
             </Head>
-            <ReactMarkdown className="prose mx-auto my-5 rounded shadow bg-gray-200 dark:bg-gray-900 dark:prose-invert prose-sm md:prose-base p-3">
-                {decodeURIComponent(md)}
-            </ReactMarkdown>
+            <div className="prose mx-auto mt-5 rounded shadow bg-gray-200 dark:bg-gray-900 dark:prose-invert prose-sm md:prose-base p-3">
+                <h1 id="what-is-the-vigen-re-cipher-">
+                    What is the Vigenère Cipher?
+                </h1>
+                <p>
+                    The{" "}
+                    <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">
+                        Vigenère cipher
+                    </a>{" "}
+                    is a polyalphabetic substitution cipher that is a natural
+                    evolution of the Caesar cipher. The Caesar cipher encrypts
+                    by shifting each letter in the plaintext up or down a
+                    certain number of places in the alphabet. If the message was
+                    right shifted by 4, each A would become E, and each S would
+                    become W.
+                </p>
+                <p>
+                    In the Vigenère cipher, a message is encrypted using a
+                    secret key, as well as an encryption table (called a
+                    Vigenere square, Vigenere table, or tabula recta). The
+                    tabula recta typically contains the 26 letters of the Latin
+                    alphabet from A to Z along the top of each column, and
+                    repeated along the left side at the beginning of each row.
+                    Each row of the square has the 26 letters of the Latin
+                    alphabet, shifted one position to the right in a cyclic way
+                    as the rows progress downwards. Once B moves to the front, A
+                    moves down to the end. This continues for the entire square.
+                </p>
+                <p>
+                    Also, other alphabets than the English alphabet can be used
+                    in a similar way to construct a tabula recta.
+                    <img
+                        src="https://www.boxentriq.com/img/vigenere-table1.png"
+                        alt="Tabula Recta"
+                    />
+                </p>
+                <p>Let's take this plaintext phrase as an example:</p>
+                <pre>
+                    <code>
+                        <span class="hljs-attribute">
+                            IMPROVE YOUR PUZZLE SOLVING SKILLS
+                        </span>
+                    </code>
+                </pre>
+                <p>
+                    After finalizing the plaintext, the person encrypting would
+                    then pick a secret key, which would help encrypt and decrypt
+                    the message. Our example secret key here is:
+                </p>
+                <pre>
+                    <code>
+                        <span class="hljs-attribute">BOXENTRIQ</span>
+                    </code>
+                </pre>
+                <p>
+                    The next step is repeating the secret key enough times so
+                    its length matches the plain text.
+                </p>
+                <pre>
+                    <code>
+                        <span class="hljs-attribute">
+                            IMPROVE YOUR PUZZLE SOLVING SKILLS
+                        </span>
+                    </code>
+                </pre>
+                <pre>
+                    <code>
+                        <span class="hljs-keyword">BOXENTR </span>IQBO XENTRI
+                        QBOXENT RIQBOX
+                    </code>
+                </pre>
+                <p>
+                    Once the two lines are split into five-letter groups, start
+                    encrypting. Take one letter from the plaintext group and a
+                    letter from the secret key group (we're going to start with
+                    I and B), and find the entry in the tabula recta where the
+                    row and column intersect. For this example, the first letter
+                    of the encrypted cipher text is J.
+                    <img
+                        src="https://www.boxentriq.com/img/vigenere-table2.png"
+                        alt="Vigenere table example"
+                    />
+                </p>
+                <p>
+                    Once you've done that for every character, your final
+                    encrypted text should look like this:
+                </p>
+                <pre>
+                    <code>
+                        <span class="hljs-attribute">
+                            JAMVB OVGEV FMYMS CMIPZ SMAZJ SYMZP
+                        </span>
+                    </code>
+                </pre>
+                <p>
+                    You can use this cipher for short or long messages. Once
+                    you've mastered the tabula recta, the encryption process is
+                    easy!
+                </p>
+                <h1 id="how-to-decrypt-it">How to Decrypt it</h1>
+                <p>
+                    If you have the secret key, decrypting is as easy as
+                    encrypting. You can work backwards using the tabula recta.
+                    First repeat the secret key so its length matches the cipher
+                    text.
+                </p>
+                <pre>
+                    <code>
+                        <span class="hljs-attribute">
+                            JAMVB OVGEV FMYMS CMIPZ SMAZJ SYMZP
+                        </span>
+                    </code>
+                </pre>
+                <pre>
+                    <code>
+                        <span class="hljs-keyword">BOXEN </span>TRIQB OXENT
+                        RIQBO XENTR IQBOX
+                    </code>
+                </pre>
+                <p>
+                    Using the tabula recta, find the row that corresponds to the
+                    first letter in your secret key text- in our case, B. In the
+                    B row, find the corresponding cipher text letter J. The
+                    vertical column where that cipher text letter is located
+                    reveals the plaintext letter I.
+                    <img
+                        src="https://www.boxentriq.com/img/vigenere-table3.png"
+                        alt="Vigenère cipher table"
+                    />
+                </p>
+                <p>
+                    The Vigenère cipher can also be described and then decrypted
+                    algebraically, by assigning each letter from A to Z a value
+                    from 0 to 25, with addition being performed modulo 26.
+                </p>
+                <h1 id="how-to-break-it">How to Break It</h1>
+                <p>
+                    Of course, these decryption methods only work if the secret
+                    key is known. In his initial attack against the Vigenère
+                    cipher, Friedrich Kasiski had success by examining repeated
+                    strings of characters in the cipher text, which could
+                    indicate the length of the secret key. This method is now
+                    called the Kasiski examination. Finding more repeated
+                    strings of characters helps narrow down the length of the
+                    potential secret key. Once the length of the secret key is
+                    known, the cipher text is rewritten into a corresponding
+                    number of columns, with a column for each letter of the key.
+                    Each column is then made up of plaintext that's been
+                    encrypted by one Caesar cipher. The code-breaker then breaks
+                    the cipher text in a similar way to a Caesar cipher.
+                </p>
+                <p>
+                    Auguste Kerckhoffs improved on Kasiski's method by matching
+                    each “column&#39;s letter frequencies to shifted plaintext
+                    frequencies to discover the key letter (Caesar shift) for
+                    that column.” Once the code-breaker knows each letter in the
+                    secret key, all they have to do is decrypt the cipher text
+                    using a Vigenere square.
+                </p>
+                <p>
+                    Another option is the key elimination method. If you guess
+                    the key length and then subtract the ciphertext from itself,
+                    offset by the key length, it will eliminate the secret key.
+                    The result will be the plaintext subtracted from itself,
+                    offset by the key length. If any words longer than the key
+                    length can be guessed, their self-encryption can be searched
+                    for.
+                </p>
+                <p>
+                    Copied from{" "}
+                    <a href="https://www.boxentriq.com/code-breaking/vigenere-cipher">
+                        https://www.boxentriq.com/code-breaking/vigenere-cipher
+                    </a>
+                </p>
+            </div>
         </>
     );
 };
