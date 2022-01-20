@@ -29,7 +29,11 @@ export function encryptVigenere(
     }
     let characterList = generateCharacterList(options);
     plaintext.split("").map((char, i) => {
-        if (characterList.indexOf(char) > -1) {
+        // check if character and corresponding key is present in characterList. If not return without encrypting
+        if (
+            characterList.indexOf(char) > -1 &&
+            characterList.indexOf(key[i % key.length]) > -1
+        ) {
             encryptedText +=
                 characterList[
                     (characterList.indexOf(char) +
@@ -56,7 +60,10 @@ export function decryptVigenere(
 
     let decryptedText = "";
     encryptedText.split("").map((char, i) => {
-        if (characterList.indexOf(char) > -1) {
+        if (
+            characterList.indexOf(char) > -1 &&
+            characterList.indexOf(key[i % key.length]) > -1
+        ) {
             decryptedText +=
                 characterList[
                     (characterList.indexOf(char) -

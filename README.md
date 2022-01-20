@@ -31,6 +31,8 @@ This project was made as a part of [Devjam](https://devjam.vercel.app).
 -   [x] User can generate a random encryption key
 -   [x] User can encrypt uppercase letters, numbers and symbols if they choose to
 
+**Note:** If a character of input or key is not present inside characterlist (default: lowercase a-z), the cipher returns the same character without encrypting
+
 # Dependencies
 
 -   Next.js
